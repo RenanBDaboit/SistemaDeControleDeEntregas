@@ -44,5 +44,7 @@ public class Entregador {
 
     public void setDispnivel(boolean disponivel) {
         this.disponivel = disponivel;
+
+        
     }
 }
