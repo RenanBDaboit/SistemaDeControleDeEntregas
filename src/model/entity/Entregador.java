@@ -9,6 +9,7 @@ public class Entregador {
 
     public Entregador(int id, String nome, String veiculo) {
         this.id = id;
+        
         this.nome = nome;
         this.veiculo = veiculo;
         this.disponivel = true;
