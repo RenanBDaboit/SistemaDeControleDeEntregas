@@ -10,7 +10,6 @@ public class EntregaController {
     private final EntregaRepository repository;
     private final EntregadorRepository entregadorRepository;
     private final ClienteRepository clienteRepository;
-
     private final EntregaService service = new EntregaService();
 
     public EntregaController(EntregaRepository repository, EntregadorRepository entregadorRepository, ClienteRepository clienteRepository) {
