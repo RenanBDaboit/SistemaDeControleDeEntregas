@@ -6,16 +6,11 @@ import model.repository.ClienteRepository;
 public class ClienteService {
     
     public boolean cadastrarCliente(int id, String nome, String endereco, ClienteRepository clienteRepository){
-        
-        boolean idDuplicado = false;
-        
+ 
         for(Cliente c : clienteRepository.listar().values()){
             if(c.getId() == id){
-                idDuplicado = true;
+                return false;
             }
-        }
-        if(idDuplicado){
-            return true;
         }
         
         if(nome.isBlank()){
