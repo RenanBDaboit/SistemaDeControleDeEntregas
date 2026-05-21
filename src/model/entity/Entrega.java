@@ -6,9 +6,15 @@ public class Entrega {
     private Cliente cliente;
     private Entregador entregador;
     private String descricao;
-    private String status;
+    public enum Status{
+        PENDENTE,
+        EM_ANDAMENTO,
+        FINALIZADA
+    }
+    
+    public Status status;
 
-    public Entrega(int id, Cliente cliente, Entregador entregador, String descricao, String status) {
+    public Entrega(int id, Cliente cliente, Entregador entregador, String descricao, Status status) {
         this.id = id;
         this.cliente = cliente;
         this.entregador = entregador;
@@ -48,11 +54,11 @@ public class Entrega {
         this.descricao = descricao;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }
