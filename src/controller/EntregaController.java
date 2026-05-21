@@ -23,7 +23,7 @@ public class EntregaController {
     }
 
     public boolean atualizar(int id, int idCliente, int idEntregador, String descricao){
-        return true;
+        return service.atualizar(id, idCliente, idEntregador, descricao, clienteRepository, entregadorRepository, repository);
     }
 
     public boolean finalizar(int id){
