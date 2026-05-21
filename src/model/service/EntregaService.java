@@ -13,7 +13,7 @@ public class EntregaService {
                                     ClienteRepository clienteRepository, EntregadorRepository entregadorRepository, 
                                     EntregaRepository entregaRepository){
         
-        boolean idNaoExistente = true;
+        boolean idDuplicado = true;
         boolean entregadorNaoExistente = true;
         boolean clienteNaoExistente = true;
         
@@ -40,11 +40,11 @@ public class EntregaService {
         
         for(Entrega entrega : entregaRepository.listar().values()){
             if(entrega.getId() == id){
-                idNaoExistente = false;
+                idDuplicado = true;
             }
         }
         
-        if(!idNaoExistente){
+        if(idDuplicado){
             return false;
         }
         
@@ -61,6 +61,58 @@ public class EntregaService {
         return true;
     }
     
+    public boolean atualizar(int id, int idCliente, int idEntregador, String descricao,
+                             ClienteRepository clienteRepository, EntregadorRepository entregadorRepository,
+                             EntregaRepository entregaRepository){
+
+        boolean idNaoExistente = true;
+        boolean entregadorNaoExistente = true;
+        boolean clienteNaoExistente = true;
+
+        Cliente clienteAtualizar = null;
+        Entregador entregadorAtualizar = null;
+
+        if(descricao.isBlank()){
+            return false;
+        }
+
+        for(Cliente cliente : clienteRepository.listar().values()){
+            if(cliente.getId() == idCliente){
+                clienteNaoExistente = false;
+                clienteAtualizar = cliente;
+            }
+        }
+
+        for(Entregador entregador : entregadorRepository.listar().values()){
+            if(entregador.getId() == idEntregador){
+                entregadorNaoExistente = false;
+                entregadorAtualizar = entregador;
+            }
+        }
+
+        for(Entrega entrega : entregaRepository.listar().values()){
+            if(entrega.getId() == id){
+                idNaoExistente = false;
+            }
+        }
+
+        if(idNaoExistente){
+            return false;
+        }
+
+        if(clienteNaoExistente){
+            return false;
+        }
+
+        if(entregadorNaoExistente){
+            return false;
+        }
+
+        entregaRepository.salvar(new Entrega(id, clienteAtualizar, entregadorAtualizar, descricao, Entrega.Status.EM_ANDAMENTO));
+        entregadorAtualizar.setDispnivel(false);
+        return true;
+    }
+    
     public boolean finalizar(int id, EntregaRepository entregaRepository){
 
         boolean idNaoExistente = true;
@@ -71,7 +123,7 @@ public class EntregaService {
             }
         }
 
-        if(!idNaoExistente){
+        if(idNaoExistente){
             return false;
         }
 
@@ -90,7 +142,7 @@ public class EntregaService {
             }
         }
 
-        if(!idNaoExistente){
+        if(idNaoExistente){
             return false;
         }
         
