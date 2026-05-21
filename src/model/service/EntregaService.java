@@ -59,6 +59,7 @@ public class EntregaService {
         entregaRepository.salvar(new Entrega(id, clienteSalvar, entregadorSalvar, descricao, Entrega.Status.EM_ANDAMENTO));
         entregadorSalvar.setDispnivel(false);
         return true;
+        
     }
     
     public boolean atualizar(int id, int idCliente, int idEntregador, String descricao,
