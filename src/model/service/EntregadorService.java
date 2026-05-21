@@ -6,15 +6,10 @@ public class EntregadorService {
 
     public boolean cadastrarEntregador(int id, String nome, String veiculo, EntregadorRepository entregadorRepository){
 
-        boolean idDuplicado = false;
-
         for(Entregador e : entregadorRepository.listar().values()){
             if(e.getId() == id){
-                idDuplicado = true;
+                return false;
             }
-        }
-        if(idDuplicado){
-            return true;
         }
 
         if(nome.isBlank()){

@@ -12,8 +12,6 @@ public class EntregaService {
     public boolean cadastrarEntrega(int id, int idCliente, int idEntregador, String descricao, 
                                     ClienteRepository clienteRepository, EntregadorRepository entregadorRepository, 
                                     EntregaRepository entregaRepository){
-        
-        boolean idDuplicado = true;
         boolean entregadorNaoExistente = true;
         boolean clienteNaoExistente = true;
         
@@ -40,12 +38,8 @@ public class EntregaService {
         
         for(Entrega entrega : entregaRepository.listar().values()){
             if(entrega.getId() == id){
-                idDuplicado = true;
+                return false;
             }
-        }
-        
-        if(idDuplicado){
-            return false;
         }
         
         if(clienteNaoExistente){
