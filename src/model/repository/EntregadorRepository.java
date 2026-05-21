@@ -8,6 +8,10 @@ public class EntregadorRepository {
 
     private final HashMap<Integer, Entregador> entregadores = new HashMap<>();
 
+    public void salvar(Entregador entregador){
+        entregadores.put(entregador.getId(), entregador);
+    }
+
     public void cadastrar(Entregador entregador){
         entregadores.put(entregador.getId(), entregador);
     }

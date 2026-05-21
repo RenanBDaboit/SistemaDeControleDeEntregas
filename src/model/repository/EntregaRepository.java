@@ -7,6 +7,10 @@ import java.util.HashMap;
 public class EntregaRepository {
 
     private final HashMap<Integer, Entrega> entregas = new HashMap<>();
+    
+    public void salvar(Entrega entrega){
+        entregas.put(entrega.getId(), entrega);
+    }
 
     public void cadastrar(Entrega entrega){
         entregas.put(entrega.getId(), entrega);
