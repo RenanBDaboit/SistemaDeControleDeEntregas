@@ -45,7 +45,15 @@ public class Entregador {
 
     public void setDispnivel(boolean disponivel) {
         this.disponivel = disponivel;
+    }
 
-        
+    @Override
+    public String toString() {
+        return "Entregador{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", veiculo='" + veiculo + '\'' +
+                ", disponivel=" + disponivel +
+                '}';
     }
 }

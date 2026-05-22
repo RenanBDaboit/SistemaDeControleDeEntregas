@@ -50,7 +50,7 @@ public class EntregaService {
             return false;
         }
         
-        entregaRepository.salvar(new Entrega(id, clienteSalvar, entregadorSalvar, descricao, Entrega.Status.EM_ANDAMENTO));
+        entregaRepository.salvar(new Entrega(id, clienteSalvar, entregadorSalvar, descricao, Entrega.Status.PENDENTE));
         entregadorSalvar.setDispnivel(false);
         return true;
         
