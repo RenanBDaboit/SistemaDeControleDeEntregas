@@ -61,4 +61,15 @@ public class Entrega {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Entrega{" +
+                "id=" + id +
+                ", cliente=" + cliente +
+                ", entregador=" + entregador +
+                ", descricao='" + descricao + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

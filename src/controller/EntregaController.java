@@ -1,9 +1,14 @@
 package controller;
 
+import model.entity.Cliente;
+import model.entity.Entrega;
+import model.entity.Entregador;
 import model.repository.ClienteRepository;
 import model.repository.EntregaRepository;
 import model.repository.EntregadorRepository;
 import model.service.EntregaService;
+
+import java.util.HashMap;
 
 public class EntregaController {
 
@@ -18,7 +23,7 @@ public class EntregaController {
         this.clienteRepository = clienteRepository;
     }
 
-    public boolean cadastrar(int id, int idCliente, int idEntregador, String descricao){
+    public boolean cadastrar(int id, int idCliente, int idEntregador, String descricao, Entrega.Status status){
         return service.cadastrarEntrega(id, idCliente, idEntregador, descricao, clienteRepository, entregadorRepository, repository);
     }
 
@@ -33,4 +38,13 @@ public class EntregaController {
     public boolean remover(int id){
         return service.remover(id, repository);
     }
+
+    public HashMap<Integer, Cliente> listarClientes(){
+        return clienteRepository.listar();
+    }
+
+    public HashMap<Integer, Entregador> listarEntregadores(){
+        return entregadorRepository.listar();
+    }
+
 }
