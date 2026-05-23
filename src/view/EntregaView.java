@@ -178,32 +178,32 @@ public class EntregaView {
         entregaRepository.salvar(entrega);
     }
 
-        public void removerEntrega(){
+    public void removerEntrega() {
 
-            listarEntregas();
+        listarEntregas();
 
-            System.out.print("Digite o ID da entrega que deseja remover: ");
-            int id = 0;
-            try {
-                id = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException n) {
-                System.out.println("Apenas números");
-            }
-
-            Entrega entrega = entregaRepository.buscarPorId(id);
-
-            if(entrega == null){
-                System.out.println("Entrega não encontrada");
-                return;
-            }
-
-            if(entrega.getStatus() == Entrega.Status.EM_ANDAMENTO){
-                System.out.println("Não é possível remover entrega em andamento");
-                return;
-            }
-
-            entregaRepository.remover(id);
-
-            System.out.println("Entrega removida com sucesso");
-            }
+        System.out.print("Digite o ID da entrega que deseja remover: ");
+        int id = 0;
+        try {
+            id = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException n) {
+            System.out.println("Apenas números");
         }
+
+        Entrega entrega = entregaRepository.buscarPorId(id);
+
+        if (entrega == null) {
+            System.out.println("Entrega não encontrada");
+            return;
+        }
+
+        if (entrega.getStatus() == Entrega.Status.EM_ANDAMENTO) {
+            System.out.println("Não é possível remover entrega em andamento");
+            return;
+        }
+
+        entregaRepository.remover(id);
+
+        System.out.println("Entrega removida com sucesso");
+    }
+}
